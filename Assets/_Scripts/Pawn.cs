@@ -66,7 +66,7 @@ public class Pawn : MonoBehaviour
 
             }
 
-            Vector3 nextPos = currentRout.FieldsList[routeIndex + 1].position;
+            Vector3 nextPos = currentRout.FieldsList[routeIndex + 1].position + currentRout.Offset[Id];
             
             // Wait until next position is reached
             while (MoveToTarget(nextPos))
