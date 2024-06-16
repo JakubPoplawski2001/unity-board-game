@@ -6,16 +6,31 @@ public class Route : MonoBehaviour
 {
     Transform[] fields;
     public List<Transform> FieldsList = new List<Transform>();
+    public Vector3[] Offset = new Vector3[4];
     public bool isLooped = true;
 
 
     void Awake()
     {
+        GenerateOffset();
         UpdateFields();
     }
 
 
-    private void OnDrawGizmos()
+    void GenerateOffset()
+    {
+        float offset = 2;
+        Offset = new Vector3[4]
+        {
+            new Vector3(offset, 0, offset),
+            new Vector3(-offset, 0, offset),
+            new Vector3(offset, 0, -offset),
+            new Vector3(-offset, 0, -offset)
+        };
+    }
+
+
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
