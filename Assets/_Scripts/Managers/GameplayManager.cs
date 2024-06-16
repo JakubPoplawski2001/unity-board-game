@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameplayManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameplayManager instance;
     public Transform[] players = new Transform[2];
     public PlayerCamera playerCamera;
 
