@@ -7,7 +7,7 @@ public class Player : Pawn
 {
     void Update()
     {
-        if (GameplayManager.instance.PlayerTurn != id) return;
+        if (GameplayManager.Instance.PlayerTurn != id) return;
 
         if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
         {

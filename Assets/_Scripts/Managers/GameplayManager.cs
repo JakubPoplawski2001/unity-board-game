@@ -1,11 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class GameplayManager : MonoBehaviour
 {
-    public static GameplayManager instance;
+    #region Singleton
+    static GameplayManager instance;
+    public static GameplayManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                Debug.LogError("No GameplayManager instance");
+            return instance;
+        }
+    }
+
+    void SetupSingleton()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
+    #endregion
+
     public Transform[] players = new Transform[2];
     public PlayerCamera playerCamera;
 
@@ -13,7 +33,7 @@ public class GameplayManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null) { instance = this; }
+        SetupSingleton();
     }
 
     void Start()

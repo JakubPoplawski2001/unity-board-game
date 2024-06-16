@@ -74,7 +74,7 @@ public class Pawn : MonoBehaviour
             routeIndex++;
         }
 
-        GameplayManager.instance.EndTurn(this);
+        GameplayManager.Instance.EndTurn(this);
 
         isMoving = false;
     }
