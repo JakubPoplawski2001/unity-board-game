@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -26,30 +27,50 @@ public class GameplayManager : MonoBehaviour
     }
     #endregion
 
-    public Transform[] players = new Transform[2];
-    public PlayerCamera playerCamera;
+    public PlayerCamera PlayerCamera;
+    public Route Route;
+    [SerializeField] GameObject pawnPrefab;
+    public List<Pawn> Players = new List<Pawn>();
+
 
     public int PlayerTurn { get; private set; }
+
+
+    void SpawPawns()
+    {
+        int playersQuantity = 3;
+        for (int i = 0; i < playersQuantity; i++)
+        {
+            // ToDo: Change spawn position
+            var playerGO = Instantiate(pawnPrefab, Route.FieldsList[i].position, Quaternion.identity);
+            var playerPawn = playerGO.GetComponent<Pawn>();
+            playerPawn.Id = i;
+            Players.Add(playerPawn);
+            //Players[i] = playerPawn;
+        }
+    }
+
 
     void Awake()
     {
         SetupSingleton();
+        SpawPawns();
     }
 
     void Start()
     {
-        PlayerTurn = 1;
-        playerCamera.ChangePlayer(players[PlayerTurn]);
+        PlayerTurn = 0;
+        PlayerCamera.ChangePlayer(Players[PlayerTurn].transform);
     }
 
 
     public void EndTurn(Pawn sender)
     {
-        if (sender.id != PlayerTurn) return;
+        if (sender.Id != PlayerTurn) return;
 
-        int nextPlayerId = (PlayerTurn + 1) % players.Length;
+        int nextPlayerId = (PlayerTurn + 1) % Players.Count;
         PlayerTurn = nextPlayerId;
 
-        playerCamera.ChangePlayer(players[PlayerTurn]);
+        PlayerCamera.ChangePlayer(Players[PlayerTurn].transform);
     }
 }

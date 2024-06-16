@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
-    public Route currentRout;
-    public int id;
+    Route currentRout;
+    // ToDo: Change Id to private
+    public int Id {  get; set; }
 
     int routeIndex;
 
     public int Steps;
     protected bool isMoving;
 
+
+    void Start()
+    {
+        currentRout = GameplayManager.Instance.Route;
+    }
 
     void Update()
     {
