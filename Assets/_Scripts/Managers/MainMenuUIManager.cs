@@ -30,6 +30,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("UI Pages reference")]
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject selectGameMenu;
+    [SerializeField] GameObject gameLobby;
     //[SerializeField] GameObject settingsMenu;
 
     void Awake()
@@ -49,5 +50,9 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowSelectGameMenu() => selectGameMenu.SetActive(true);
     public void HideSelectGameMenu() => selectGameMenu.SetActive(false);
+
+    public void ShowGameLobby() => gameLobby.SetActive(true);
+
+    public void HideGameLobby() => gameLobby.SetActive(false);
 
 }

@@ -5,7 +5,8 @@ public class SelectGameMenuUI : MonoBehaviour
 {
     public void OnCreateGameClicked()
     {
-        GameManager.Instance.ChangeState(nameof(GameplayGameState));
+        MainMenuUIManager.Instance.HideSelectGameMenu();
+        MainMenuUIManager.Instance.ShowGameLobby();
     }
 
     public void OnJoinClicked()
