@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MainMenuScreen" src="project://database/Assets/_Scripts/UI/Screens/MainMenuScreen.uxml?fileID=9197481963319205126&amp;guid=8ff6c1183a72c174c82d3e8d3da582e4&amp;type=3#MainMenuScreen" />
+    <ui:Template name="SelectGameScreen" src="project://database/Assets/_Scripts/UI/Screens/SelectGameScreen.uxml?fileID=9197481963319205126&amp;guid=6f02aa84efa52b54590a76e9c9d10a45&amp;type=3#SelectGameScreen" />
+    <ui:Template name="LobbyScreen" src="project://database/Assets/_Scripts/UI/Screens/LobbyScreen.uxml?fileID=9197481963319205126&amp;guid=11c57e077abca284a823aae188409668&amp;type=3#LobbyScreen" />
+    <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
+    <ui:Instance template="MainMenuScreen" name="MainMenuScreen" class="screen" />
+    <ui:Instance template="SelectGameScreen" name="SelectGameScreen" class="screen" style="display: none;" />
+    <ui:Instance template="LobbyScreen" name="LobbyScreen" class="screen" style="display: none;" />
+</ui:UXML>
