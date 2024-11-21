@@ -45,7 +45,9 @@ public class MainMenuUIManager : MonoBehaviour
 
     void Start()
     {
-        
+        //var screen = uiDocument.rootVisualElement.Q<VisualElement>(className: StringNames.USS.screen);
+        //StringNames.USS.screen = "screen";
+        //screen.style.display = DisplayStyle.None;
     }
 
 
