@@ -5,8 +5,8 @@ public class MainMenuUI : MonoBehaviour
 {
     public void OnPlayClicked()
     {
-        MainMenuUIManager.Instance.ShowSelectGameMenu();
-        MainMenuUIManager.Instance.HideMainMenu();
+        //MainMenuUIManager.Instance.ShowSelectGameMenu();
+        //MainMenuUIManager.Instance.HideMainMenu();
     }
 
 

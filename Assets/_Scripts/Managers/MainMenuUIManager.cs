@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 public class MainMenuUIManager : MonoBehaviour
@@ -27,11 +29,14 @@ public class MainMenuUIManager : MonoBehaviour
     }
     #endregion
 
-    [Header("UI Pages reference")]
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject selectGameMenu;
-    [SerializeField] GameObject gameLobby;
-    //[SerializeField] GameObject settingsMenu;
+    [Header("Reference")]
+    [SerializeField] UIDocument uiDocument;
+
+
+    [Header("Events")]
+    [SerializeField] public UnityEvent<bool> btnClick;
+    [SerializeField] public UnityEvent<bool> btnClick2;
+
 
     void Awake()
     {
@@ -44,15 +49,20 @@ public class MainMenuUIManager : MonoBehaviour
     }
 
 
-    public void ShowMainMenu() => mainMenu.SetActive(true);
+    void SetupVisualElements()
+    {
+
+    }
+
+    //public void ShowMainMenu() => mainMenu.SetActive(true);
     
-    public void HideMainMenu() => mainMenu.SetActive(false);
+    //public void HideMainMenu() => mainMenu.SetActive(false);
 
-    public void ShowSelectGameMenu() => selectGameMenu.SetActive(true);
-    public void HideSelectGameMenu() => selectGameMenu.SetActive(false);
+    //public void ShowSelectGameMenu() => selectGameMenu.SetActive(true);
+    //public void HideSelectGameMenu() => selectGameMenu.SetActive(false);
 
-    public void ShowGameLobby() => gameLobby.SetActive(true);
+    //public void ShowGameLobby() => gameLobby.SetActive(true);
 
-    public void HideGameLobby() => gameLobby.SetActive(false);
+    //public void HideGameLobby() => gameLobby.SetActive(false);
 
 }

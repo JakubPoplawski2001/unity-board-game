@@ -45,13 +45,22 @@
     -unity-text-align: middle-center;
 }
 
+Button:hover {
+    scale: 1.05 1.05;
+    transition-property: scale;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out-bounce;
+}
+
 .title-label {
     color: rgb(248, 220, 70);
     -unity-text-outline-color: rgb(209, 154, 47);
     -unity-text-outline-width: 6px;
     text-shadow: 8px 8px 0 rgb(0, 0, 0);
-    font-size: 100px;
+    font-size: 120px;
     -unity-text-align: middle-center;
+    letter-spacing: 16px;
+    word-spacing: 32px;
 }
 
 .h1-label {

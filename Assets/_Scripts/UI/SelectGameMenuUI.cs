@@ -5,8 +5,8 @@ public class SelectGameMenuUI : MonoBehaviour
 {
     public void OnCreateGameClicked()
     {
-        MainMenuUIManager.Instance.HideSelectGameMenu();
-        MainMenuUIManager.Instance.ShowGameLobby();
+        //MainMenuUIManager.Instance.HideSelectGameMenu();
+        //MainMenuUIManager.Instance.ShowGameLobby();
     }
 
     public void OnJoinClicked()
@@ -21,8 +21,8 @@ public class SelectGameMenuUI : MonoBehaviour
 
     public void OnBackClicked()
     {
-        MainMenuUIManager.Instance.HideSelectGameMenu();
-        MainMenuUIManager.Instance.ShowMainMenu();
+        //MainMenuUIManager.Instance.HideSelectGameMenu();
+        //MainMenuUIManager.Instance.ShowMainMenu();
 
     }
 

@@ -11,8 +11,8 @@ public class GameLobbyUI : MonoBehaviour
 
     public void OnBackClicked()
     {
-        MainMenuUIManager.Instance.HideGameLobby();
-        MainMenuUIManager.Instance.ShowMainMenu();
+        //MainMenuUIManager.Instance.HideGameLobby();
+        //MainMenuUIManager.Instance.ShowMainMenu();
 
     }
 }
