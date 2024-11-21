@@ -8,5 +8,5 @@
             <ui:Button text="JOIN" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-button" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-back-button" />
+    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="menu-back-button" />
 </ui:UXML>

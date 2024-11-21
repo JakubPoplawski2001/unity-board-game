@@ -1,14 +1,20 @@
+/*
+ * File contains string reference names
+ */
 
-//public static class StringNames
-//{
+/// <summary>
+/// 
+/// </summary>
+public static class USSElementNames
+{
+    public const string MAIN_MENU_SCREEN = "MainMenuScreen";
+    public const string PLAY_BUTTON = "PlayButton";
+    public const string SETTINGS_BUTTON = "SettingsButton";
+    public const string EXIT_BUTTON = "ExitButton";
 
-//    public static class USS
-//    {
-//        public const string screen = "screen";
-//    }
-//}
+    public const string SELECT_GAME_SCREEN = "SelectGameScreen";
+    public const string BACK_BUTTON = "BackButton";
 
-//public enum StringNames
-//{
-    
-//}
+
+    public const string LOBBY_SCREEN = "LobbyScreen";
+}
