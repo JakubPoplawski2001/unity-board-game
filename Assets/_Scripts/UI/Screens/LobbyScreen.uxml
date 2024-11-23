@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
-    <ui:VisualElement style="flex-grow: 1;">
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+    <ui:VisualElement class="screen" style="flex-grow: 1;">
         <ui:VisualElement name="PlayerCards" style="flex-grow: 1;" />
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        <ui:Button text="START" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Lobby_StartButton" class="menu-button" />
+        <ui:Button text="&lt;-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Lobby_BackButton" class="menu-back-button" />
     </ui:VisualElement>
 </ui:UXML>

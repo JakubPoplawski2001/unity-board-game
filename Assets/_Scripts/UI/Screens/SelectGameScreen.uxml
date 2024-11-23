@@ -2,11 +2,11 @@
     <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
     <ui:VisualElement class="screen" style="justify-content: space-around;">
         <ui:VisualElement name="VisualElement" class="menu-panel" style="height: 80%;">
-            <ui:Button text="CREATE NEW GAME" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-button" />
+            <ui:Button text="CREATE NEW GAME" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectGame_CreateGameButton" class="menu-button" />
             <ui:Label tabindex="-1" text="OR" parse-escape-sequences="true" display-tooltip-when-elided="true" class="h1-label" />
-            <ui:IntegerField label="Enter sesion code:" value="123456789" class="menu-field" />
-            <ui:Button text="JOIN" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-button" />
+            <ui:IntegerField label="Enter sesion code:" value="123456789" name="SelectGame_CodeInputField" class="menu-field" />
+            <ui:Button text="JOIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectGame_JoinGameButton" class="menu-button" />
         </ui:VisualElement>
+        <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectGame_BackButton" class="menu-back-button" />
     </ui:VisualElement>
-    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="menu-back-button" />
 </ui:UXML>
