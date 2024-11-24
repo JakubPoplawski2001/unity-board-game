@@ -3,9 +3,9 @@
     <ui:VisualElement class="screen" style="justify-content: space-around;">
         <ui:Label tabindex="-1" text="GAME TITLE" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title-label" />
         <ui:VisualElement class="menu-panel">
-            <ui:Button text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MainMenu_PlayButton" class="menu-button" />
-            <ui:Button text="SETTINGS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MainMenu_SettingsButton" class="menu-button" />
-            <ui:Button text="EXIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MainMenu_ExitButton" class="menu-button" />
+            <ui:Button text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" class="menu-button" />
+            <ui:Button text="SETTINGS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="menu-button" />
+            <ui:Button text="EXIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="menu-button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

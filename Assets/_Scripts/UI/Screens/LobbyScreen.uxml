@@ -1,8 +1,18 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="PlayerCard" src="project://database/Assets/_Scripts/UI/ControlsTemplates/PlayerCard.uxml?fileID=9197481963319205126&amp;guid=852ac7b15cd97d24c89120e8df3a8217&amp;type=3#PlayerCard" />
     <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
-    <ui:VisualElement class="screen" style="flex-grow: 1;">
-        <ui:VisualElement name="PlayerCards" style="flex-grow: 1;" />
-        <ui:Button text="START" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="menu-button" />
+    <ui:VisualElement class="screen" style="flex-grow: 1; top: 0; left: 3px;">
+        <ui:VisualElement name="PlayerCards" style="flex-grow: 0; flex-direction: row; margin-top: 8%; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+            <ui:Instance template="PlayerCard" name="PlayerCard" />
+            <ui:Instance template="PlayerCard" name="PlayerCard" />
+            <ui:Instance template="PlayerCard" name="PlayerCard" />
+            <ui:Instance template="PlayerCard" name="PlayerCard" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: space-between; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+            <ui:Label tabindex="-1" text="JOIN CODE:" parse-escape-sequences="true" display-tooltip-when-elided="true" class="h1-label" />
+            <ui:Label tabindex="-1" text="123456789" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CodeLabel" class="h1-label" />
+            <ui:Button text="START" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="menu-button" style="flex-grow: 0;" />
+        </ui:VisualElement>
         <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="menu-back-button" />
     </ui:VisualElement>
 </ui:UXML>

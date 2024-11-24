@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
+    <ui:VisualElement name="VisualElement" class="card">
+        <ui:VisualElement name="PlayerScreen" class="screen" style="width: 80%; height: 80%; display: none;">
+            <ui:Label tabindex="-1" text="PLAYER" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerType" class="h1-label" />
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;" />
+            <ui:Label tabindex="-1" text="PLAYER 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerNumber" class="h1-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="EmptyScreen" class="screen" style="display: flex; justify-content: space-between; width: 80%; height: 80%;">
+            <ui:Label tabindex="-1" text="Waiting for a player" parse-escape-sequences="true" display-tooltip-when-elided="true" class="tool-tip-labe" style="white-space: normal;" />
+            <ui:Button text="+" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddComputerButton" style="align-self: center; width: 120px; height: 120px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-left-radius: 80px; border-top-right-radius: 80px; border-bottom-right-radius: 80px; border-bottom-left-radius: 80px; border-left-color: rgb(102, 102, 102); border-right-color: rgb(102, 102, 102); border-top-color: rgb(102, 102, 102); border-bottom-color: rgb(102, 102, 102); background-color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 60px; color: rgb(102, 102, 102);" />
+            <ui:Label tabindex="-1" text="Add Computer Player" parse-escape-sequences="true" display-tooltip-when-elided="true" class="tool-tip-labe" style="white-space: normal;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
