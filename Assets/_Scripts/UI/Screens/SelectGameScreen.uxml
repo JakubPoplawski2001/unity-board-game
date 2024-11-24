@@ -7,6 +7,6 @@
             <ui:IntegerField label="Enter sesion code:" value="123456789" name="SelectGame_CodeInputField" class="menu-field" />
             <ui:Button text="JOIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectGame_JoinGameButton" class="menu-button" />
         </ui:VisualElement>
-        <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectGame_BackButton" class="menu-back-button" />
+        <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="menu-back-button" />
     </ui:VisualElement>
 </ui:UXML>

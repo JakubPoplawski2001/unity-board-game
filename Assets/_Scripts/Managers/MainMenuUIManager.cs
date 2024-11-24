@@ -66,19 +66,19 @@ public class MainMenuUIManager : MonoBehaviour
         lobbyScreen = root.Q(USSElementNames.LOBBY_SCREEN);
 
         // MainMenu
-        playButton = root.Q<Button>(USSElementNames.MAIN_MENU_PLAY_BUTTON);
-        settingsButton = root.Q<Button>(USSElementNames.MAIN_MENU_SETTINGS_BUTTON);
-        exitButton = root.Q<Button>(USSElementNames.MAIN_MENU_EXIT_BUTTON);
+        playButton = mainMenuScreen.Q<Button>(USSElementNames.MAIN_MENU_PLAY_BUTTON);
+        settingsButton = mainMenuScreen.Q<Button>(USSElementNames.MAIN_MENU_SETTINGS_BUTTON);
+        exitButton = mainMenuScreen.Q<Button>(USSElementNames.MAIN_MENU_EXIT_BUTTON);
 
         // SelectGame
-        selectGameBackButton = root.Q<Button>(USSElementNames.SELECT_GAME_BACK_BUTTON);
-        createGameButton = root.Q<Button>(USSElementNames.SELECT_GAME_CREATE_GAME_BUTTON);
-        codeInputField = root.Q<IntegerField>(USSElementNames.SELECT_GAME_CODE_INPUT_FIELD);
-        joinGameButton = root.Q<Button>(USSElementNames.SELECT_GAME_JOIN_GAME_BUTTON);
+        selectGameBackButton = selectGameScreen.Q<Button>(USSElementNames.SELECT_GAME_BACK_BUTTON);
+        createGameButton = selectGameScreen.Q<Button>(USSElementNames.SELECT_GAME_CREATE_GAME_BUTTON);
+        codeInputField = selectGameScreen.Q<IntegerField>(USSElementNames.SELECT_GAME_CODE_INPUT_FIELD);
+        joinGameButton = selectGameScreen.Q<Button>(USSElementNames.SELECT_GAME_JOIN_GAME_BUTTON);
 
         // Lobby
-        lobbyBackButton = root.Q<Button>(USSElementNames.LOBBY_BACK_BUTTON);
-        lobbyStartButton = root.Q<Button>(USSElementNames.LOBBY_START_BUTTON);
+        lobbyBackButton = lobbyScreen.Q<Button>(USSElementNames.LOBBY_BACK_BUTTON);
+        lobbyStartButton = lobbyScreen.Q<Button>(USSElementNames.LOBBY_START_BUTTON);
     }
 
     #endregion
@@ -89,19 +89,24 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] public UnityEvent PlayButtonClicked;
     [SerializeField] public UnityEvent ExitButtonClicked;
     [SerializeField] public UnityEvent SelectGameBackButtonClicked;
+    [SerializeField] public UnityEvent LobbyBackButtonClicked;
 
     void SubscribeToEvents()
     {
         playButton.clicked += OnPlayBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
-        selectGameBackButton.clicked += OnBackBtnClicked;
+        createGameButton.clicked += OnCreateGameBtnClicked;
+        selectGameBackButton.clicked += OnSelectGameBackBtnClicked;
+        lobbyBackButton.clicked += OnLobbyBackBtnClicked;
     }
 
     void UnsubscribeToEvents()
     {
         playButton.clicked -= OnPlayBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
-        selectGameBackButton.clicked -= OnBackBtnClicked;
+        createGameButton.clicked -= OnCreateGameBtnClicked;
+        selectGameBackButton.clicked -= OnSelectGameBackBtnClicked;
+        lobbyBackButton.clicked -= OnLobbyBackBtnClicked;
     }
 
 
@@ -122,12 +127,28 @@ public class MainMenuUIManager : MonoBehaviour
 #endif
     }
 
-    void OnBackBtnClicked()
+    void OnCreateGameBtnClicked()
+    {
+        ShowElement(lobbyScreen);
+        HideElement(mainMenuScreen);
+        HideElement(selectGameScreen);
+    }
+
+    void OnSelectGameBackBtnClicked()
     {
         SelectGameBackButtonClicked?.Invoke();
 
         ShowElement(mainMenuScreen);
         HideElement(selectGameScreen);
+        HideElement(lobbyScreen);
+    }
+
+    void OnLobbyBackBtnClicked()
+    {
+        LobbyBackButtonClicked?.Invoke();
+
+        ShowElement(selectGameScreen);
+        HideElement(mainMenuScreen);
         HideElement(lobbyScreen);
     }
 
