@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
-    <ui:VisualElement name="VisualElement" class="card">
+    <ui:VisualElement name="VisualElement" class="menu-card">
         <ui:VisualElement name="PlayerScreen" class="screen" style="width: 80%; height: 80%; display: none;">
             <ui:Label tabindex="-1" text="PLAYER" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerType" class="h1-label" />
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;" />

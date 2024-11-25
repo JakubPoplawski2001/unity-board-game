@@ -4,26 +4,6 @@
     height: 100%;
 }
 
-.card {
-    align-items: center;
-    justify-content: center;
-    width: 440px;
-    height: 750px;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    padding-top: 40px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-bottom-left-radius: 40px;
-    background-color: rgba(170, 170, 170, 0.59);
-}
-
 .menu-panel {
     align-items: center;
     justify-content: space-between;
@@ -31,33 +11,18 @@
     width: 40%;
     height: 60%;
     background-color: rgba(170, 170, 170, 0.59);
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-bottom-left-radius: 40px;
+    border-radius: 40px;
 }
 
 .menu-button {
     flex-grow: 1;
     flex-shrink: 1;
     align-self: stretch;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
+    margin: 20px;
     font-size: 80px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-width: 14px;
-    border-right-width: 14px;
-    border-bottom-width: 14px;
-    border-left-width: 14px;
-    border-left-color: rgb(239, 204, 64);
-    border-right-color: rgb(239, 204, 64);
-    border-top-color: rgb(239, 204, 64);
-    border-bottom-color: rgb(239, 204, 64);
+    border-radius: 20px;
+    border-width: 14px;
+    border-color: rgb(239, 204, 64);
     background-color: rgb(209, 154, 47);
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
@@ -71,18 +36,9 @@
     top: 40px;
     width: 100px;
     height: 100px;
-    border-top-width: 14px;
-    border-right-width: 14px;
-    border-bottom-width: 14px;
-    border-left-width: 14px;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border-bottom-left-radius: 100px;
-    border-left-color: rgb(239, 204, 64);
-    border-right-color: rgb(239, 204, 64);
-    border-top-color: rgb(239, 204, 64);
-    border-bottom-color: rgb(239, 204, 64);
+    border-width: 14px;
+    border-radius: 100px;
+    border-color: rgb(239, 204, 64);
     background-color: rgb(209, 154, 47);
     font-size: 60px;
     -unity-font-style: bold;
@@ -147,12 +103,17 @@ Button:hover {
 }
 
 .menu-field #unity-text-input {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    padding-top: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-left: 16px;
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.menu-card {
+    align-items: center;
+    justify-content: center;
+    width: 440px;
+    height: 750px;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 40px;
+    background-color: rgba(170, 170, 170, 0.59);
 }
