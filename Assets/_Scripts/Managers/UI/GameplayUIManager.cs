@@ -41,6 +41,10 @@ public class GameplayUIManager : MonoBehaviour
 
     // Gameplay HUD
     Button pauseButton;
+
+    // TMP
+    Button pickButton;
+    Button useButton;
     
     // Pause Menu Screen
     Button resumeButton;
@@ -59,6 +63,10 @@ public class GameplayUIManager : MonoBehaviour
         // Gameplay HUD
         pauseButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_PAUSE_BUTTON);
 
+        // TMP
+        pickButton = gameplayScreen.Q<Button>("TMPPickButton");
+        useButton = gameplayScreen.Q<Button>("TMPUseButton");
+
         // PauseMenu
         resumeButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_RESUME_BUTTON);
         settingsButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_SETTINGS_BUTTON);
@@ -73,6 +81,11 @@ public class GameplayUIManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] public UnityEvent PauseButtonClicked;
 
+    // TMP
+    [SerializeField] public UnityEvent PickButtonClicked;
+    [SerializeField] public UnityEvent UseButtonClicked;
+
+
     [SerializeField] public UnityEvent ResumeButtonClicked;
     [SerializeField] public UnityEvent ExitButtonClicked;
 
@@ -84,6 +97,11 @@ public class GameplayUIManager : MonoBehaviour
         resumeButton.clicked += OnResumeBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
 
+
+        // TMP
+        pickButton.clicked += OnPickBtnClicked;
+        useButton.clicked += OnUseBtnClicked;
+
     }
 
     void UnsubscribeToEvents()
@@ -92,6 +110,11 @@ public class GameplayUIManager : MonoBehaviour
 
         resumeButton.clicked -= OnResumeBtnClicked;
         exitButton.clicked -= OnExitBtnClicked;
+
+
+        // TMP
+        pickButton.clicked -= OnPickBtnClicked;
+        useButton.clicked -= OnUseBtnClicked;
     }
 
 
@@ -116,6 +139,22 @@ public class GameplayUIManager : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #endif
+    }
+
+
+    // TMP
+    void OnPickBtnClicked()
+    {
+        PickButtonClicked?.Invoke();
+
+
+    }
+
+    void OnUseBtnClicked()
+    {
+        UseButtonClicked?.Invoke();
+
+
     }
 
     #endregion

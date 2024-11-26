@@ -25,12 +25,7 @@ public static class USSElementNames
 
     public const string GAMEPLAY_SCREEN = "GameplayHUD";
     public const string GAMEPLAY_PAUSE_BUTTON = "PauseButton";
-
-    public const string TMP_PICK_BUTTON = "TMPPickButton";
-    public const string TMP_USE_BUTTON = "TMPUseButton";
-    
-
-
+     
     public const string PAUSE_MENU_SCREEN = "PauseScreen";
     public const string PAUSE_MENU_RESUME_BUTTON = "ResumeButton";
     public const string PAUSE_MENU_SETTINGS_BUTTON = "SettingsButton";
