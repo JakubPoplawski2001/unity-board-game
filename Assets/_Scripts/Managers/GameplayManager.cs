@@ -73,4 +73,26 @@ public class GameplayManager : MonoBehaviour
 
         PlayerCamera.ChangePlayer(Players[PlayerTurn].transform);
     }
+
+    void Turn()
+    {
+        // Get current Player
+
+        // Check if Player has any cards "in hand"
+        // if (Player.Cards is not empty) -> return valid player Actions
+
+        // Wait for PlayerAction:
+        // if PlayerActions has only one action then perform it (not necessary)
+        // a) Pick Card
+        // b) Use Card (if has valid cards - look up)
+        
+        // Perform selected action and following e.g. CardAction
+        // Apply FieldAction (only of the new field / after move)
+
+        // End current players turn
+
+        // Check Win state?
+
+        // Starts new turn of next player
+    }
 }
