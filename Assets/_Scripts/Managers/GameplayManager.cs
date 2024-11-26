@@ -36,7 +36,7 @@ public class GameplayManager : MonoBehaviour
     public int PlayerTurn { get; private set; }
 
 
-    void SpawPawns()
+    void SpawnPawns()
     {
         int playersQuantity = 3;
         for (int i = 0; i < playersQuantity; i++)
@@ -54,7 +54,7 @@ public class GameplayManager : MonoBehaviour
     void Awake()
     {
         SetupSingleton();
-        SpawPawns();
+        SpawnPawns();
     }
 
     void Start()

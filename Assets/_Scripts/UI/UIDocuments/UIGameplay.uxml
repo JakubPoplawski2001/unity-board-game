@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GameplayHUD" src="project://database/Assets/_Scripts/UI/Screens/GameplayHUD.uxml?fileID=9197481963319205126&amp;guid=132737d53f93c8f4c9827740db4f5e96&amp;type=3#GameplayHUD" />
+    <ui:Template name="PauseScreen" src="project://database/Assets/_Scripts/UI/Screens/PauseScreen.uxml?fileID=9197481963319205126&amp;guid=9b2012c368f6eaf4485390c64f5b0c6b&amp;type=3#PauseScreen" />
+    <Style src="project://database/Assets/_Scripts/UI/Styles/GameStyle.uss?fileID=7433441132597879392&amp;guid=53e1f53a8ec2a8b4cba926568be982f1&amp;type=3#GameStyle" />
+    <Style src="project://database/Assets/_Scripts/UI/Styles/CoreStyle.uss?fileID=7433441132597879392&amp;guid=b80e30a743f2fd84f8919c18ea4e3990&amp;type=3#CoreStyle" />
+    <ui:Instance template="GameplayHUD" name="GameplayHUD" class="screen" />
+    <ui:Instance template="PauseScreen" name="PauseScreen" class="screen" style="display: none;" />
+</ui:UXML>

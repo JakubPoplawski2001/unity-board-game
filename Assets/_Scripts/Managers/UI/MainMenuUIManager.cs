@@ -95,18 +95,24 @@ public class MainMenuUIManager : MonoBehaviour
     {
         playButton.clicked += OnPlayBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
+
         createGameButton.clicked += OnCreateGameBtnClicked;
         selectGameBackButton.clicked += OnSelectGameBackBtnClicked;
+
         lobbyBackButton.clicked += OnLobbyBackBtnClicked;
+        lobbyStartButton.clicked += OnLobbyStartBtnClicked;
     }
 
     void UnsubscribeToEvents()
     {
         playButton.clicked -= OnPlayBtnClicked;
-        exitButton.clicked += OnExitBtnClicked;
+        exitButton.clicked -= OnExitBtnClicked;
+
         createGameButton.clicked -= OnCreateGameBtnClicked;
         selectGameBackButton.clicked -= OnSelectGameBackBtnClicked;
+
         lobbyBackButton.clicked -= OnLobbyBackBtnClicked;
+        lobbyStartButton.clicked -= OnLobbyStartBtnClicked;
     }
 
 
@@ -150,6 +156,11 @@ public class MainMenuUIManager : MonoBehaviour
         ShowElement(selectGameScreen);
         HideElement(mainMenuScreen);
         HideElement(lobbyScreen);
+    }
+
+    void OnLobbyStartBtnClicked()
+    {
+        GameManager.Instance.ChangeState(nameof(GameplayGameState));
     }
 
     #endregion

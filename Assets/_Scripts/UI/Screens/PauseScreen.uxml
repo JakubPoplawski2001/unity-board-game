@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
+    <Style src="project://database/Assets/_Scripts/UI/Styles/CoreStyle.uss?fileID=7433441132597879392&amp;guid=b80e30a743f2fd84f8919c18ea4e3990&amp;type=3#CoreStyle" />
+    <ui:VisualElement class="screen" style="justify-content: space-around; background-color: rgba(0, 0, 0, 0.5);">
+        <ui:Label tabindex="-1" text="PAUSE" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title-label" />
+        <ui:VisualElement class="menu-panel">
+            <ui:Button text="RESUME" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResumeButton" class="menu-button" />
+            <ui:Button text="SETTINGS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="menu-button" />
+            <ui:Button text="EXIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="menu-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

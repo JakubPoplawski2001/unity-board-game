@@ -18,8 +18,21 @@ public static class USSElementNames
     public const string SELECT_GAME_CODE_INPUT_FIELD = "CodeInputField";
     public const string SELECT_GAME_JOIN_GAME_BUTTON = "JoinGameButton";
 
-
     public const string LOBBY_SCREEN = "LobbyScreen";
     public const string LOBBY_BACK_BUTTON = "BackButton";
     public const string LOBBY_START_BUTTON = "StartButton";
+
+
+    public const string GAMEPLAY_SCREEN = "GameplayHUD";
+    public const string GAMEPLAY_PAUSE_BUTTON = "PauseButton";
+
+    public const string TMP_PICK_BUTTON = "TMPPickButton";
+    public const string TMP_USE_BUTTON = "TMPUseButton";
+    
+
+
+    public const string PAUSE_MENU_SCREEN = "PauseScreen";
+    public const string PAUSE_MENU_RESUME_BUTTON = "ResumeButton";
+    public const string PAUSE_MENU_SETTINGS_BUTTON = "SettingsButton";
+    public const string PAUSE_MENU_EXIT_BUTTON = "ExitButton";
 }
