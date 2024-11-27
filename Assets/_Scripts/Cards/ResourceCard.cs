@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ResourceCard : ICard
 {
-    public GameplayManager GameplayManager { get; set; }
-
     public string Name { get => $"Move {Value}"; }
     public int Value { get; }
     public ResourceType Resource { get; }
@@ -54,9 +52,8 @@ public class ResourceCard : ICard
         // somehow update UI
     }
 
-    public ResourceCard(GameplayManager gameplayManager, ResourceType resource, int value)
+    public ResourceCard(ResourceType resource, int value)
     {
-        GameplayManager = gameplayManager;
         Resource = resource;
         Value = value;
     }

@@ -1,35 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Route : MonoBehaviour
 {
-    Transform[] fields;
-    public List<Transform> FieldsList = new List<Transform>();
-    public Vector3[] Offset = new Vector3[4];
-    public bool isLooped = true;
+    [SerializeField] private List<Field> fields = new List<Field>();
+    public List<Field> Fields { get => fields; }
+
+    [SerializeField] bool isLooped = true;
+    public bool IsLooped { get => isLooped; }
+
+    [SerializeField] List<Castle> castles = new List<Castle>();
+    public List<Castle> Castles { get => castles; }
+
+    [SerializeField] float offsetValue = 2;
+    public Vector3[] Offset
+    {
+        get
+        {
+            return new Vector3[4]
+            {
+                new Vector3(offsetValue, 0, offsetValue),
+                new Vector3(-offsetValue, 0, offsetValue),
+                new Vector3(offsetValue, 0, -offsetValue),
+                new Vector3(-offsetValue, 0, -offsetValue),
+            };
+        }
+    }
 
 
     void Awake()
     {
-        GenerateOffset();
         UpdateFields();
     }
 
 
-    void GenerateOffset()
-    {
-        float offset = 2;
-        Offset = new Vector3[4]
-        {
-            new Vector3(offset, 0, offset),
-            new Vector3(-offset, 0, offset),
-            new Vector3(offset, 0, -offset),
-            new Vector3(-offset, 0, -offset)
-        };
-    }
-
-
+    #region Gizmos
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -37,44 +45,82 @@ public class Route : MonoBehaviour
         UpdateFields();
 
         DrawConnections();
+        DrawStart();
+        DrawOffset(1);
+    }
 
-        Gizmos.color= Color.blue;
-        Gizmos.DrawWireCube(FieldsList[0].position, new Vector3(0.5f, 2, 2));
+    void DrawOffset(int fieldIndex)
+    {
+        Gizmos.color = Color.magenta;
+
+        foreach (var offset in Offset)
+        {
+            Gizmos.DrawRay(Fields[fieldIndex].Position + offset, Vector3.up);
+        }
+    }
+
+    void DrawStart()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(Fields[0].Position, new Vector3(0.5f, 2, 2));
     }
 
     void DrawConnections()
     {
-        for (int i = 0; i < FieldsList.Count; i++)
+        for (int i = 0; i < Fields.Count; i++)
         {
-            Vector3 currentPos = FieldsList[i].position;
+            Vector3 currentPos = Fields[i].Position;
 
             // Skip first field
             if (i <= 0) continue;
 
-            Vector3 previousPos = FieldsList[i - 1].position;
+            Vector3 previousPos = Fields[i - 1].Position;
 
             Gizmos.DrawLine(previousPos, currentPos);
         }
 
-        if (isLooped)
+        if (IsLooped)
         {
-            Gizmos.DrawLine(FieldsList[FieldsList.Count - 1].position, FieldsList[0].position);
+            Gizmos.DrawLine(Fields[Fields.Count - 1].Position, Fields[0].Position);
+        }
+    }
+    #endregion
+
+
+    public void AssignCastles()
+    {
+        var players = GameplayManager.Instance.Players;
+        var castles = GetComponentsInChildren<Castle>();
+
+        if (castles.Length < players.Count)
+        {
+            throw new IndexOutOfRangeException("Not enough Castles for all Players");
+        }
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            castles[i].Owner = players[i];
+            castles[i].Name = $"{players[i].name}'s Castle";
         }
     }
 
-
     void UpdateFields()
     {
-        FieldsList.Clear();
-
-        fields = GetComponentsInChildren<Transform>();
-
-        foreach (Transform fieldTransform in fields)
+        fields.Clear();
+        var fieldsArray = GetComponentsInChildren<Field>();
+        for (int i = 0; i<fieldsArray.Length; i++)
         {
-            // Skip parent object
-            if (fieldTransform == this.transform) continue;
+            var field = fieldsArray[i];
+            field.Index = i;
+            //if(field.GetType() == typeof(Castle))
+            //{
+            //    Debug.Log($"Found Castle");
+            //    field.name = "Castle " + i.ToString();
+            //}
 
-            FieldsList.Add(fieldTransform);
+            fields.Add(field);
         }
+
+        //Debug.Log($"Castle pos from Field: {TmpFields[5].name}");
     }
 }

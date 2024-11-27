@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MoveCard : ICard
 {
-    public GameplayManager GameplayManager {  get; set; }
-
     public string Name { get => $"Move {Value}"; }
     public int Value { get; }
     public bool CanBeUsed { get => true; }
@@ -41,9 +39,8 @@ public class MoveCard : ICard
     }
 
 
-    public MoveCard(GameplayManager gameplayManager, int value)
+    public MoveCard(int value)
     {
-        GameplayManager = gameplayManager;
         Value = value;
     }
 

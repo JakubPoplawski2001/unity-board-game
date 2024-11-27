@@ -50,9 +50,9 @@ public class Pawn : MonoBehaviour
         while (Steps > 0)
         {
             // Handle OutOfRange fields
-            if (routeIndex == currentRout.FieldsList.Count - 1)
+            if (routeIndex == currentRout.Fields.Count - 1)
             {
-                if (currentRout.isLooped)
+                if (currentRout.IsLooped)
                 {
                     // Loop
                     routeIndex = -1;
@@ -66,7 +66,7 @@ public class Pawn : MonoBehaviour
 
             }
 
-            Vector3 nextPos = currentRout.FieldsList[routeIndex + 1].position + currentRout.Offset[Id];
+            Vector3 nextPos = currentRout.Fields[routeIndex + 1].Position + currentRout.Offset[Id];
             
             // Wait until next position is reached
             while (MoveToTarget(nextPos))

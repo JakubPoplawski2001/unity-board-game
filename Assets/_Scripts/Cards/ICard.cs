@@ -4,8 +4,6 @@ using UnityEngine;
 
 public interface ICard
 {
-    public GameplayManager GameplayManager { get; set; }
-
     string Name { get; }
 
     bool CanBeUsed { get; }

@@ -42,7 +42,7 @@ public class GameplayManager : MonoBehaviour
         for (int i = 0; i < playersQuantity; i++)
         {
             // ToDo: Change spawn position (i => 0)
-            var playerGO = Instantiate(pawnPrefab, Route.FieldsList[0].position + Route.Offset[i], Quaternion.identity);
+            var playerGO = Instantiate(pawnPrefab, Route.Fields[0].Position + Route.Offset[i], Quaternion.identity);
             var playerPawn = playerGO.GetComponent<Pawn>();
             playerPawn.Id = i;
             Players.Add(playerPawn);
