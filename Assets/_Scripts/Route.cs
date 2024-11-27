@@ -36,6 +36,11 @@ public class Route : MonoBehaviour
         UpdateFields();
     }
 
+    void Start()
+    {
+        SetupCastles();
+    }
+
 
     #region Gizmos
     void OnDrawGizmos()
@@ -87,7 +92,7 @@ public class Route : MonoBehaviour
     #endregion
 
 
-    public void AssignCastles()
+    public void SetupCastles()
     {
         var players = GameplayManager.Instance.Players;
         var castles = GetComponentsInChildren<Castle>();
@@ -101,6 +106,8 @@ public class Route : MonoBehaviour
         {
             castles[i].Owner = players[i];
             castles[i].Name = $"{players[i].name}'s Castle";
+
+            Castles.Add(castles[i]);
         }
     }
 
@@ -112,15 +119,7 @@ public class Route : MonoBehaviour
         {
             var field = fieldsArray[i];
             field.Index = i;
-            //if(field.GetType() == typeof(Castle))
-            //{
-            //    Debug.Log($"Found Castle");
-            //    field.name = "Castle " + i.ToString();
-            //}
-
             fields.Add(field);
         }
-
-        //Debug.Log($"Castle pos from Field: {TmpFields[5].name}");
     }
 }
