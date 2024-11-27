@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourceCard : ICard
 {
-    public string Name { get => $"Move {Value}"; }
+    public string Name { get => $"{Resource} {Value}"; }
     public int Value { get; }
     public ResourceType Resource { get; }
     public bool CanBeUsed

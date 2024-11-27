@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1539810984}
+  gameCard: {fileID: 9197481963319205126, guid: e76cdd43d07a7074ca4dd5a8acc08f8d, type: 3}
   PauseButtonClicked:
     m_PersistentCalls:
       m_Calls: []

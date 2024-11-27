@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Scripts/UI/Styles/GameStyle.uss?fileID=7433441132597879392&amp;guid=53e1f53a8ec2a8b4cba926568be982f1&amp;type=3#GameStyle" />
+    <Style src="project://database/Assets/_Scripts/UI/Styles/MenuStyle.uss?fileID=7433441132597879392&amp;guid=02cb3933efa36a745896d4020a107095&amp;type=3#MenuStyle" />
     <ui:VisualElement name="VisualElement" class="card">
         <ui:VisualElement class="card-content">
             <ui:Label tabindex="-1" text="MOVE 3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CardValue" class="card-label" />
@@ -7,5 +8,9 @@
             <ui:Label tabindex="-1" text="MOVE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CardType" class="card-label" />
         </ui:VisualElement>
         <ui:VisualElement name="SelectedEffect" class="card-selection-fx" style="display: none;" />
+        <ui:VisualElement name="VisualElement" class="card-content" style="flex-grow: 1; justify-content: space-between; display: none;">
+            <ui:Button text="USE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UseButton" class="menu-button" style="flex-grow: 0;" />
+            <ui:Button text="DROP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UseButton" class="menu-button" style="flex-grow: 0;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

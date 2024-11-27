@@ -15,26 +15,19 @@ public class Pawn : MonoBehaviour
     protected bool isMoving;
 
 
+    public List<ICard> Cards;
+    public Castle Castle;
+
+
     void Start()
     {
         currentRout = GameplayManager.Instance.Route;
+        Cards = new List<ICard>();
     }
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space) && !isMoving)
-        //{
-        //    Steps = UnityEngine.Random.Range(1, 7);
-        //    Debug.Log($"Rolled {Steps}");
 
-        //    try
-        //    {
-        //        StartCoroutine(Move());
-        //    }
-        //    catch (ArgumentOutOfRangeException e) { 
-        //        Debug.LogError("Out of range error: " + e.Message);
-        //    }
-        //}
     }
 
 

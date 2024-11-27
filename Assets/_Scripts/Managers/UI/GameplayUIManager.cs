@@ -34,6 +34,8 @@ public class GameplayUIManager : MonoBehaviour
 
     #region VisualElements
     [SerializeField] UIDocument uiDocument;
+    [Header("Visual Tree Template")]
+    [SerializeField] VisualTreeAsset gameCard;
 
     VisualElement root;
     VisualElement gameplayScreen;
@@ -43,8 +45,7 @@ public class GameplayUIManager : MonoBehaviour
     Button pauseButton;
 
     // TMP
-    Button pickButton;
-    Button useButton;
+    VisualElement deckCards;
     
     // Pause Menu Screen
     Button resumeButton;
@@ -63,15 +64,45 @@ public class GameplayUIManager : MonoBehaviour
         // Gameplay HUD
         pauseButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_PAUSE_BUTTON);
 
-        // TMP
-        pickButton = gameplayScreen.Q<Button>("TMPPickButton");
-        useButton = gameplayScreen.Q<Button>("TMPUseButton");
-
+        
         // PauseMenu
         resumeButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_RESUME_BUTTON);
         settingsButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_SETTINGS_BUTTON);
         exitButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_EXIT_BUTTON);
 
+    }
+
+    void LateSetupVisualElements()
+    {
+        // TMP
+        //var list = GameplayManager.Instance.DeckCards;
+        //deckCards = gameplayScreen.Q("DeckCards");
+        //var card = new VisualElement();
+        //card.Add(gameCard.Instantiate());
+        //deckCards.makeItem = () => card;
+        ////deckCards.bindItem = (e, i) => (e as Label).text = list[i].Id.ToString();
+        //deckCards.bindItem = (e, i) =>
+        //{
+        //    var gameCard = list[i];
+        //    var cardRoot = e as VisualElement;
+        //    cardRoot.Q<Label>("CardType").text = gameCard.Name;
+        //    cardRoot.Q<Label>("CardValue").text = gameCard.Name;
+
+        //};
+        //deckCards.itemsSource = list;
+        //deckCards.itemsChosen += (e) => Debug.Log($"Chosen {e}");
+
+
+        var cardList = GameplayManager.Instance.DeckCards;
+        deckCards = gameplayScreen.Q("DeckCards");
+        deckCards.Clear();
+
+        foreach (var card in cardList)
+        {
+            var cardVisual = gameCard.Instantiate();
+            cardVisual.Q<Label>("CardValue").text = card.Name;
+            deckCards.Add(cardVisual);            
+        }
     }
 
     #endregion
@@ -99,8 +130,6 @@ public class GameplayUIManager : MonoBehaviour
 
 
         // TMP
-        pickButton.clicked += OnPickBtnClicked;
-        useButton.clicked += OnUseBtnClicked;
 
     }
 
@@ -113,8 +142,6 @@ public class GameplayUIManager : MonoBehaviour
 
 
         // TMP
-        pickButton.clicked -= OnPickBtnClicked;
-        useButton.clicked -= OnUseBtnClicked;
     }
 
 
@@ -169,6 +196,8 @@ public class GameplayUIManager : MonoBehaviour
 
     void Start()
     {
+        // TMP
+        LateSetupVisualElements();
     }
 
     void OnEnable()

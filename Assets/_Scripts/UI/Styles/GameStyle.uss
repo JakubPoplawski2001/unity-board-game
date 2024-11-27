@@ -1,8 +1,8 @@
 .card {
     align-items: center;
     justify-content: center;
-    width: 440px;
-    height: 750px;
+    width: 200px;
+    height: 300px;
     margin: 20px;
     padding: 40px;
     border-radius: 40px;
@@ -17,6 +17,8 @@
     translate: 0 20px;
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out-back;
+    /* Not supproted in Unity */
+    /* z-index: 2; */
 }
 
 .card-focused {
@@ -41,7 +43,7 @@
 }
 
 .card-label {
-    font-size: 50px;
+    font-size: 36px;
     -unity-text-align: middle-center;
     color: rgb(255, 255, 255);
     -unity-text-outline-width: 2px;

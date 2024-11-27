@@ -105,6 +105,7 @@ public class Route : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             castles[i].Owner = players[i];
+            players[i].Castle = castles[i];
             castles[i].Name = $"{players[i].name}'s Castle";
 
             Castles.Add(castles[i]);

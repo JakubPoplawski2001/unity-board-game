@@ -31,9 +31,24 @@ public class GameplayManager : MonoBehaviour
     public Route Route;
     [SerializeField] GameObject pawnPrefab;
     public List<Pawn> Players = new List<Pawn>();
+    public List<ICard> DeckCards
+    {
+        get
+        {
+
+            var list = new List<ICard>();
+            list.Add(new MoveCard(4));
+            list.Add(new MoveCard(2));
+            list.Add(new ResourceCard(ResourceCard.ResourceType.Wood, 3));
+            list.Add(new ResourceCard(ResourceCard.ResourceType.Stone, 1));
+            list.Add(new ResourceCard(ResourceCard.ResourceType.Food, 5));
+            return list;
+        }
+    }
 
 
     public int PlayerTurn { get; private set; }
+    public Pawn CurrentPlayer { get; private set; }
 
 
     void SpawnPawns()
@@ -79,13 +94,16 @@ public class GameplayManager : MonoBehaviour
         // Get current Player
 
         // Check if Player has any cards "in hand"
-        // if (Player.Cards is not empty) -> return valid player Actions
+        //if (CurrentPlayer.Cards.Count < 0)
+        //{
+        //    //return valid Actions
+        //}
 
         // Wait for PlayerAction:
         // if PlayerActions has only one action then perform it (not necessary)
         // a) Pick Card
         // b) Use Card (if has valid cards - look up)
-        
+
         // Perform selected action and following e.g. CardAction
         // Apply FieldAction (only of the new field / after move)
 
