@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -44,9 +45,9 @@ public class GameplayUIManager : MonoBehaviour
 
     // Gameplay HUD
     Button pauseButton;
-    CardList deckCards;
+    CardListView deckCards;
     Button pickCardsButton;
-    CardList handCards;
+    CardListView handCards;
     Button useCardButton;
     Button dropCardButton;
 
@@ -69,7 +70,7 @@ public class GameplayUIManager : MonoBehaviour
 
         pickCardsButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_PICK_CARDS_BUTTON);
 
-        deckCards = new CardList(
+        deckCards = new CardListView(
             gameplayScreen.Q(USSElementNames.GAMEPLAY_DECK_CARDS_LIST),
             2,
             gameCard);
@@ -85,11 +86,12 @@ public class GameplayUIManager : MonoBehaviour
             if (isMaxReached) ShowElement(pickCardsButton);
             else HideElement(pickCardsButton);
         });
+        deckCards.AddOnUpdateItemsAction(OnCardsUpdated);
 
         useCardButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_USE_CARD_BUTTON);
         dropCardButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_DROP_CARD_BUTTON);
 
-        handCards = new CardList(
+        handCards = new CardListView(
             gameplayScreen.Q(USSElementNames.GAMEPLAY_HAND_CARDS_LIST),
             1,
             gameCard);
@@ -103,7 +105,15 @@ public class GameplayUIManager : MonoBehaviour
         {
             if (isMaxReached)
             {
-                ShowElement(useCardButton);
+                // Check if card can be used
+                if (handCards.GetSelectedItems().All(c => c.CanBeUsed))
+                {
+                    ShowElement(useCardButton);
+                }
+                else
+                {
+                    HideElement(useCardButton);
+                }
                 ShowElement(dropCardButton);
             }
             else
@@ -112,18 +122,13 @@ public class GameplayUIManager : MonoBehaviour
                 HideElement(dropCardButton);
             }
         });
+        handCards.AddOnUpdateItemsAction(OnCardsUpdated);
 
         // PauseMenu
         resumeButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_RESUME_BUTTON);
         settingsButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_SETTINGS_BUTTON);
         exitButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_EXIT_BUTTON);
 
-    }
-
-    public void ShowCards()
-    {
-        deckCards.UpdateItems(GameplayManager.Instance.DeckCards);
-        handCards.UpdateItems(GameplayManager.Instance.CurrentPlayer.Cards);
     }
 
     #endregion
@@ -144,8 +149,11 @@ public class GameplayUIManager : MonoBehaviour
 
     void SubscribeToEvents()
     {
-        pauseButton.clicked += OnPauseBtnClicked;
+        pickCardsButton.clicked += OnPickCardsBtnClicked;
+        useCardButton.clicked += OnUseCardBtnClicked;
+        dropCardButton.clicked += OnDropCardBtnClicked;
 
+        pauseButton.clicked += OnPauseBtnClicked;
         resumeButton.clicked += OnResumeBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
 
@@ -153,8 +161,11 @@ public class GameplayUIManager : MonoBehaviour
 
     void UnsubscribeToEvents()
     {
-        pauseButton.clicked -= OnPauseBtnClicked;
+        pickCardsButton.clicked -= OnPickCardsBtnClicked;
+        useCardButton.clicked -= OnUseCardBtnClicked;
+        dropCardButton.clicked -= OnDropCardBtnClicked;
 
+        pauseButton.clicked -= OnPauseBtnClicked;
         resumeButton.clicked -= OnResumeBtnClicked;
         exitButton.clicked -= OnExitBtnClicked;
 
@@ -162,6 +173,22 @@ public class GameplayUIManager : MonoBehaviour
 
 
     // Event callbacks
+    void OnPickCardsBtnClicked()
+    {
+        GameplayManager.Instance.PickCards(deckCards.GetSelectedItems());
+    }
+
+    void OnUseCardBtnClicked()
+    {
+        GameplayManager.Instance.UseCard(handCards.GetSelectedItems()[0]);
+    }
+
+    void OnDropCardBtnClicked()
+    {
+        GameplayManager.Instance.DropCard(handCards.GetSelectedItems()[0]);
+    }
+
+
     void OnPauseBtnClicked()
     {
         PauseButtonClicked?.Invoke();
@@ -184,6 +211,12 @@ public class GameplayUIManager : MonoBehaviour
 #endif
     }
 
+    void OnCardsUpdated()
+    {
+        HideElement(pickCardsButton);
+        HideElement(useCardButton);
+        HideElement(dropCardButton);
+    }
 
     #endregion
 
@@ -205,6 +238,13 @@ public class GameplayUIManager : MonoBehaviour
         UnsubscribeToEvents();
     }
     #endregion
+
+
+    public void UpdateCards()
+    {
+        deckCards.UpdateItems(GameplayManager.Instance.DeckCards);
+        handCards.UpdateItems(GameplayManager.Instance.CurrentPlayer.Cards);
+    }
 
 
     void ShowElement(VisualElement visualElement)

@@ -77,7 +77,7 @@ public class GameplayManager : MonoBehaviour
         PlayerTurn = 0;
         CurrentPlayer = Players[0];
         PlayerCamera.ChangePlayer(Players[PlayerTurn].transform);
-        GameplayUIManager.Instance.ShowCards();
+        GameplayUIManager.Instance.UpdateCards();
     }
 
 
@@ -114,5 +114,39 @@ public class GameplayManager : MonoBehaviour
         // Check Win state?
 
         // Starts new turn of next player
+    }
+
+    public void UseCard(ICard card)
+    {
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+        CurrentPlayer.Cards.Remove(card);
+        card.Use();
+        GameplayUIManager.Instance.UpdateCards();
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+
+    }
+
+    public void DropCard(ICard card)
+    {
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+
+        CurrentPlayer.Cards.Remove(card);
+        GameplayUIManager.Instance.UpdateCards();
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+
+    }
+
+    public void PickCards(List<ICard> cards)
+    {
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+
+        foreach (var card in cards)
+        {
+            CurrentPlayer.Cards.Add(card);
+            DeckCards.Remove(card);
+        }
+        GameplayUIManager.Instance.UpdateCards();
+        foreach (var c in CurrentPlayer.Cards) Debug.Log(c.Name);
+
     }
 }

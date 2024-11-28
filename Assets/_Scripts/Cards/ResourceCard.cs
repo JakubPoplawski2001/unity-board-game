@@ -18,13 +18,14 @@ public class ResourceCard : ICard
             // or
             // if all Resource Cards are taken in FieldAction phase
             //return false;
-            return true;
+            return false;
         }
     }
 
 
     public void Use()
     {
+        return;
         // TODO: implement
         //GameplayManager.CurrentPlayer.Cards.Remove(this);
 
@@ -33,23 +34,6 @@ public class ResourceCard : ICard
         //GameplayManager.CurrentPlayer.City.AddResource(Resource, Value);
 
         //GameplayManager.EndTurn(); ?
-    }
-
-    public void Take()
-    {
-        // TODO: implement
-        //GameplayManager.DeckCards.Remove(this);
-        //GameplayManager.CurrentPlayer.Cards.Add(this);
-
-        // somehow update UI
-    }
-
-    public void Drop()
-    {
-        // TODO: implement
-        //GameplayManager.CurrentPlayer.Remove(this);
-
-        // somehow update UI
     }
 
     public ResourceCard(ResourceType resource, int value)

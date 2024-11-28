@@ -15,18 +15,13 @@ public class Pawn : MonoBehaviour
     protected bool isMoving;
 
 
-    public List<ICard> Cards = new List<ICard>
-    {
-        new MoveCard(2),
-        new MoveCard(5),
-    };
+    public List<ICard> Cards = new List<ICard>();
     public Castle Castle;
 
 
     void Start()
     {
         currentRout = GameplayManager.Instance.Route;
-        Cards = new List<ICard>();
     }
 
     void Update()

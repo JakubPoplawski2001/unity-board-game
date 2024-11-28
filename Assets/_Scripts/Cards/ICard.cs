@@ -10,8 +10,5 @@ public interface ICard
 
     void Use();
 
-    void Take();
-
-    void Drop();
 
 }

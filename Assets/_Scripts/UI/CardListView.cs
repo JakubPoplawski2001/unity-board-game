@@ -4,32 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-public class CardList
+/// <summary>
+/// Uses provided Container as custom ListView for Cards
+/// </summary>
+public class CardListView
 {
     public VisualElement Container;
     public List<VisualElement> ItemsVisuals = new List<VisualElement>();
     public List<ICard> Items;
     Action<VisualElement, ICard> itemSelectedAction;
     Action<bool> maxItemsSelectedAction;
-    //Action itemSelectedAction;
+    Action itemsUpdatedAction;
     List<ICard> selectedItems = new List<ICard>();
     int maxSelectedItems;
     VisualTreeAsset itemTemplateAsset;
 
 
-    public CardList(VisualElement container, int maxSelectedItems, VisualTreeAsset cardTemplateAsset)
+    public CardListView(VisualElement container, int maxSelectedItems, VisualTreeAsset cardTemplateAsset)
     {
         Container = container;
         this.maxSelectedItems = maxSelectedItems;
         this.itemTemplateAsset = cardTemplateAsset;
-        //this.itemSelectedAction = itemSelectedAction;
     }
 
     public void UpdateItems(List<ICard> items)
     {
         Container.Clear();
+        ItemsVisuals.Clear();
         Items = items;
+        selectedItems.Clear();
 
         for (int i = 0; i < Items.Count; i++)
         {
@@ -40,16 +43,23 @@ public class CardList
             cardVisual.RegisterCallback<ClickEvent, int>(OnItemClicked, i);
             Container.Add(cardVisual);
         }
+
+        itemsUpdatedAction?.Invoke();
     }
 
     public void AddOnItemClickedAction(Action<VisualElement, ICard> action)
     {
-        this.itemSelectedAction = action;
+        itemSelectedAction = action;
     }
 
     public void AddOnMaxItemSelectedAction(Action<bool> action)
     {
         maxItemsSelectedAction = action;
+    }
+
+    public void AddOnUpdateItemsAction(Action action)
+    {
+        itemsUpdatedAction = action;
     }
 
     void OnItemClicked(ClickEvent e, int index)
@@ -69,5 +79,5 @@ public class CardList
         itemSelectedAction?.Invoke(ItemsVisuals[index], Items[index]);
     }
 
-    List<ICard> GetSelectedItems() => selectedItems;
+    public List<ICard> GetSelectedItems() => selectedItems;
 }

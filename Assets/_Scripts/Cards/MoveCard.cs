@@ -16,26 +16,9 @@ public class MoveCard : ICard
 
         // somehow update UI
 
-        //GameplayManager.CurrentPlayer.Move(Value);
+        //GameplayManager.Instance.CurrentPlayer.Move(Value);
 
         //GameplayManager.EndTurn(); ?
-    }
-
-    public void Take()
-    {
-        // TODO: implement
-        //GameplayManager.DeckCards.Remove(this);
-        //GameplayManager.CurrentPlayer.Cards.Add(this);
-
-        // somehow update UI
-    }
-
-    public void Drop()
-    {
-        // TODO: implement
-        //GameplayManager.CurrentPlayer.Remove(this);
-
-        // somehow update UI
     }
 
 
