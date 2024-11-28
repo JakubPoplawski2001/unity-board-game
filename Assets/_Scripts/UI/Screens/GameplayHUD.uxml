@@ -12,7 +12,10 @@
             <ui:Instance template="GameCard" name="GameCard" />
             <ui:Instance template="GameCard" name="GameCard" />
         </ui:VisualElement>
+        <ui:Button text="Pick Cards" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PickCardsButton" class="menu-back-button" style="width: 400px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: 404px; left: 766px; display: none;" />
         <ui:Button text="Pause" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PauseButton" class="menu-back-button" style="width: 300px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" />
+        <ui:Button text="Use Card" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UseCardButton" class="menu-back-button" style="width: 400px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: 591px; left: 765px; display: none;" />
+        <ui:Button text="Drop Card" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DropCardButton" class="menu-back-button" style="width: 218px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: 778px; left: 35px; display: none; white-space: normal; height: 175px;" />
         <ui:VisualElement name="HandCards" style="align-self: center; width: 70%; height: 40%; flex-direction: row; justify-content: space-between; align-items: center;">
             <ui:Instance template="GameCard" name="GameCard" />
             <ui:Instance template="GameCard" name="GameCard" />

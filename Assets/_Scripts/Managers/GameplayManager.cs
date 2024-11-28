@@ -75,7 +75,9 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         PlayerTurn = 0;
+        CurrentPlayer = Players[0];
         PlayerCamera.ChangePlayer(Players[PlayerTurn].transform);
+        GameplayUIManager.Instance.ShowCards();
     }
 
 

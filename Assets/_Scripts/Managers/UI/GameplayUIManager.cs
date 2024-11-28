@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -43,10 +44,12 @@ public class GameplayUIManager : MonoBehaviour
 
     // Gameplay HUD
     Button pauseButton;
+    CardList deckCards;
+    Button pickCardsButton;
+    CardList handCards;
+    Button useCardButton;
+    Button dropCardButton;
 
-    // TMP
-    VisualElement deckCards;
-    
     // Pause Menu Screen
     Button resumeButton;
     Button settingsButton;
@@ -64,7 +67,52 @@ public class GameplayUIManager : MonoBehaviour
         // Gameplay HUD
         pauseButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_PAUSE_BUTTON);
 
-        
+        pickCardsButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_PICK_CARDS_BUTTON);
+
+        deckCards = new CardList(
+            gameplayScreen.Q(USSElementNames.GAMEPLAY_DECK_CARDS_LIST),
+            2,
+            gameCard);
+        deckCards.AddOnItemClickedAction((cardVisual, card) =>
+        {
+            var fxVisual = cardVisual.Q(USSElementNames.CARD_SELECTED_FX);
+
+            if (fxVisual.style.display == DisplayStyle.None) ShowElement(fxVisual);
+            else HideElement(fxVisual);
+        });
+        deckCards.AddOnMaxItemSelectedAction((isMaxReached) =>
+        {
+            if (isMaxReached) ShowElement(pickCardsButton);
+            else HideElement(pickCardsButton);
+        });
+
+        useCardButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_USE_CARD_BUTTON);
+        dropCardButton = gameplayScreen.Q<Button>(USSElementNames.GAMEPLAY_DROP_CARD_BUTTON);
+
+        handCards = new CardList(
+            gameplayScreen.Q(USSElementNames.GAMEPLAY_HAND_CARDS_LIST),
+            1,
+            gameCard);
+        handCards.AddOnItemClickedAction((cardVisual, card) =>
+        {
+            var focusedClassName = USSClasses.CARD_FOCUSED;
+            if (cardVisual.ClassListContains(focusedClassName)) cardVisual.RemoveFromClassList(focusedClassName);
+            else cardVisual.AddToClassList(focusedClassName);
+        });
+        handCards.AddOnMaxItemSelectedAction( (isMaxReached) =>
+        {
+            if (isMaxReached)
+            {
+                ShowElement(useCardButton);
+                ShowElement(dropCardButton);
+            }
+            else
+            {
+                HideElement(useCardButton);
+                HideElement(dropCardButton);
+            }
+        });
+
         // PauseMenu
         resumeButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_RESUME_BUTTON);
         settingsButton = pauseMenuScreen.Q<Button>(USSElementNames.PAUSE_MENU_SETTINGS_BUTTON);
@@ -72,37 +120,10 @@ public class GameplayUIManager : MonoBehaviour
 
     }
 
-    void LateSetupVisualElements()
+    public void ShowCards()
     {
-        // TMP
-        //var list = GameplayManager.Instance.DeckCards;
-        //deckCards = gameplayScreen.Q("DeckCards");
-        //var card = new VisualElement();
-        //card.Add(gameCard.Instantiate());
-        //deckCards.makeItem = () => card;
-        ////deckCards.bindItem = (e, i) => (e as Label).text = list[i].Id.ToString();
-        //deckCards.bindItem = (e, i) =>
-        //{
-        //    var gameCard = list[i];
-        //    var cardRoot = e as VisualElement;
-        //    cardRoot.Q<Label>("CardType").text = gameCard.Name;
-        //    cardRoot.Q<Label>("CardValue").text = gameCard.Name;
-
-        //};
-        //deckCards.itemsSource = list;
-        //deckCards.itemsChosen += (e) => Debug.Log($"Chosen {e}");
-
-
-        var cardList = GameplayManager.Instance.DeckCards;
-        deckCards = gameplayScreen.Q("DeckCards");
-        deckCards.Clear();
-
-        foreach (var card in cardList)
-        {
-            var cardVisual = gameCard.Instantiate();
-            cardVisual.Q<Label>("CardValue").text = card.Name;
-            deckCards.Add(cardVisual);            
-        }
+        deckCards.UpdateItems(GameplayManager.Instance.DeckCards);
+        handCards.UpdateItems(GameplayManager.Instance.CurrentPlayer.Cards);
     }
 
     #endregion
@@ -112,9 +133,9 @@ public class GameplayUIManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] public UnityEvent PauseButtonClicked;
 
-    // TMP
-    [SerializeField] public UnityEvent PickButtonClicked;
-    [SerializeField] public UnityEvent UseButtonClicked;
+    [SerializeField] public UnityEvent PickCardsButtonClicked;
+    [SerializeField] public UnityEvent UseCardButtonClicked;
+    [SerializeField] public UnityEvent DropCardButtonClicked;
 
 
     [SerializeField] public UnityEvent ResumeButtonClicked;
@@ -128,9 +149,6 @@ public class GameplayUIManager : MonoBehaviour
         resumeButton.clicked += OnResumeBtnClicked;
         exitButton.clicked += OnExitBtnClicked;
 
-
-        // TMP
-
     }
 
     void UnsubscribeToEvents()
@@ -140,12 +158,10 @@ public class GameplayUIManager : MonoBehaviour
         resumeButton.clicked -= OnResumeBtnClicked;
         exitButton.clicked -= OnExitBtnClicked;
 
-
-        // TMP
     }
 
 
-    // Event callbacks?
+    // Event callbacks
     void OnPauseBtnClicked()
     {
         PauseButtonClicked?.Invoke();
@@ -169,21 +185,6 @@ public class GameplayUIManager : MonoBehaviour
     }
 
 
-    // TMP
-    void OnPickBtnClicked()
-    {
-        PickButtonClicked?.Invoke();
-
-
-    }
-
-    void OnUseBtnClicked()
-    {
-        UseButtonClicked?.Invoke();
-
-
-    }
-
     #endregion
 
 
@@ -192,12 +193,6 @@ public class GameplayUIManager : MonoBehaviour
     {
         SetupSingleton();
         SetupVisualElements();
-    }
-
-    void Start()
-    {
-        // TMP
-        LateSetupVisualElements();
     }
 
     void OnEnable()

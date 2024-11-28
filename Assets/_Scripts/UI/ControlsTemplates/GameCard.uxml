@@ -8,9 +8,5 @@
             <ui:Label tabindex="-1" text="MOVE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CardType" class="card-label" />
         </ui:VisualElement>
         <ui:VisualElement name="SelectedEffect" class="card-selection-fx" style="display: none;" />
-        <ui:VisualElement name="VisualElement" class="card-content" style="flex-grow: 1; justify-content: space-between; display: none;">
-            <ui:Button text="USE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UseButton" class="menu-button" style="flex-grow: 0;" />
-            <ui:Button text="DROP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UseButton" class="menu-button" style="flex-grow: 0;" />
-        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

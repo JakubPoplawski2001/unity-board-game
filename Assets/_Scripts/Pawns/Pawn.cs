@@ -15,7 +15,11 @@ public class Pawn : MonoBehaviour
     protected bool isMoving;
 
 
-    public List<ICard> Cards;
+    public List<ICard> Cards = new List<ICard>
+    {
+        new MoveCard(2),
+        new MoveCard(5),
+    };
     public Castle Castle;
 
 
